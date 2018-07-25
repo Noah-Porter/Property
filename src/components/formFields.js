@@ -59,3 +59,20 @@ export class FormButton extends Component {
         )
     }
 }
+
+export class FormImage extends Component {
+    render() {
+        const { className, title, input, type, imageUrl } = this.props;
+        return (
+            <div className={`${className} form-image`}>
+                <label className='form-image__title'>{title}</label>
+                <img
+                    className='form-image__image'
+                    src={imageUrl} 
+                />
+                <input {...input} type={type}/>
+                {/* replace button/input goes here */}
+            </div>
+        )
+    }
+}
