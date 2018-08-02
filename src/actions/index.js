@@ -5,12 +5,32 @@ import {
 
 import { 
     fetchNewsletters,
-    fetchNewsletterWithId
+    fetchNewsletterWithId,
+    createNewNewsletter,
+    editNewsletter
 } from './newsletter';
+
+import {
+    changeSelectedRequestType,
+    createNewRequest,
+    fetchRequests,
+    changeStatus
+} from './requests';
+
+import {
+    updateHeader
+} from './header';
 
 export {
     signUp,
     signIn,
     fetchNewsletters,
-    fetchNewsletterWithId
+    fetchNewsletterWithId,
+    changeSelectedRequestType,
+    createNewRequest,
+    fetchRequests,
+    changeStatus,
+    createNewNewsletter,
+    editNewsletter,
+    updateHeader
 };

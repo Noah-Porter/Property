@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-import NewNewsletterForm from "./newsletterNewForm";
+import NewNewsletterForm from "../newsletter/newsletterNewForm";
 
-class NewNewsletter extends Component {
+class NewRequest extends Component {
 
   onSubmit = fields => {
 
@@ -16,7 +16,7 @@ class NewNewsletter extends Component {
     formData.append('body', body);
     formData.append('image', image);
 
-    this.props.createNewNewsletter(formData, () => {
+    this.props.createNewRequest(this.props._id, formData, () => {
         this.props.history.push("/dashboard");
     })
     
@@ -28,21 +28,26 @@ class NewNewsletter extends Component {
 
   render() {
     return (
-      <div className="new-newsletter">
+      <div className="new-request">
         <NewNewsletterForm
           onCancel={() => this.onCancel()}
           onSubmit={event => this.onSubmit(event)}
-          formTitle='New Newsletter'
-          fieldOnePlaceholder='Newsletter Title'
-          fieldOneTitle='Newsletter Title'
-          fieldTwoPlaceholder='Body Here'
-          fieldTwoTitle='Body'
+          formTitle='New Request'
+          fieldOnePlaceholder='Service Request Title Here'
+          fieldOneTitle='Service Request Title'
+          fieldTwoPlaceholder='Description Here'
+          fieldTwoTitle='Description'
         />
       </div>
     );
   }
 }
 
-NewNewsletter = connect(null, actions)(NewNewsletter);
+function mapStateToProps(state) {
+    const { _id } = state.auth.user;
+    return { _id }
+}
 
-export default NewNewsletter;
+NewRequest = connect(mapStateToProps, actions)(NewRequest);
+
+export default NewRequest;
